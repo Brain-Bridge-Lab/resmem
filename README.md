@@ -33,10 +33,6 @@ Historically, the next big advancement in using neural networks after AlexNet, t
 
 For the following discussion, while ResMem is initialized to a pre-trained optimum, I have allowed it to retrain for our problem. The thought is that given a larger set of parameters the final model *should* be more generalizable. Using weights and biases, we can run a hyperparameter sweep.
 
-<center>
-
 ![ResMem Testing](resnetsweep.png)
-
-</center>
 
 Here we can see much higher peaks, reaching into the range of 0.66-0.67! All of these runs were both trained and validated on a dataset that was constructed from both MemCat and LaMem databases.
