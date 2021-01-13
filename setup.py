@@ -4,8 +4,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="resmem",  # Replace with your own username
-    version="0.0.1",
+    name="resmem",
+    version="0.0.2",
     author="Coën D. Needell",
     author_email="coen@needell.co",
     description="A package that wraps the ResMem pytorch model.",
@@ -17,6 +17,10 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+    ],
+    install_requires=[
+        'torch',
+        'torchvision'
     ],
     python_requires='>=3.6',
 )
