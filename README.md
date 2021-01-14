@@ -4,6 +4,10 @@ This is a package that wraps [ResMem](https://coen.needell.co/projects/memnet/).
 estimates the memorability of an image, on a scale of 0 to 1.
 
 ## How to Use
+To install from PyPI:
+```shell
+pip install resmem
+```
 
 The package contains two objects, ResMem itself, and a preprocessing transformer function built on torchvision.
 ```python
