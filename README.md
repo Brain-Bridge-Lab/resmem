@@ -40,3 +40,15 @@ For the following discussion, while ResMem is initialized to a pre-trained optim
 ![ResMem Testing](resnetsweep.png)
 
 Here we can see much higher peaks, reaching into the range of 0.66-0.67! All of these runs were both trained and validated on a dataset that was constructed from both MemCat and LaMem databases.
+
+## Github Instructions
+
+If you want to fiddle around with the raw github sourcecode, go right ahead. But be aware that we use git lfs for the 
+model storage. You'll have to install the package at https://git-lfs.github.com/ and then run:
+```shell
+git lfs install
+git lfs pull
+```
+to get access to the full model. Also note that the `tests.py` file that's included with this repository references a 
+database that we, at this time, do not have permission to distribute, so consider that test file to be a guide rather 
+than a hard-and-fast test.
