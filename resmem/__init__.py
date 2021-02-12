@@ -4,6 +4,9 @@ from torchvision import transforms
 import torch
 import torch.nn.functional as f
 from pickle import UnpicklingError
+from pathlib import Path
+
+path = Path(__file__).parent / "../resmem/model.pt"
 
 transformer = transforms.Compose((
     transforms.Resize((256, 256)),
@@ -12,6 +15,7 @@ transformer = transforms.Compose((
     )
 )
 
+cpu = torch.device('cpu')
 
 class ResMem(nn.Module):
     def __init__(self, learning_rate=1e-5, momentum=.9, cruise_altitude=384, pretrained=False):
@@ -49,7 +53,7 @@ class ResMem(nn.Module):
         self.learning_rate = learning_rate
         if pretrained:
             try:
-                self.load_state_dict(torch.load('resmem/model.pt'))
+                self.load_state_dict(torch.load(path, map_location=cpu))
             except UnpicklingError:
                 raise TypeError("Could not find the model, try running git lfs pull. If you haven't installed git lfs, "
                                 "you can here: https://git-lfs.github.com/")

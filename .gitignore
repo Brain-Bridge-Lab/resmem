@@ -5,3 +5,4 @@ build
 Sources
 resmem.egg-info
 .gitignore
+.Rproj.user

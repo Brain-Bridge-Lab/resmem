@@ -6,6 +6,7 @@ from resmem import ResMem, transformer
 from matplotlib import pyplot as plt
 import seaborn as sns
 from torchvision import transforms
+import pandas as pd
 from PIL import Image
 import tqdm
 from csv import reader
@@ -53,10 +54,15 @@ with torch.no_grad():
         ypred = model.forward(x.cuda()).view(bs, -1).mean(1)
         preds += ypred.squeeze().tolist()
         names += name
+
+    df = pd.DataFrame({'Name': names, 'Y': ys, "Y_Pred": preds})
     rcorr = spearmanr(ys, preds)[0]
     loss = ((np.array(ys) - np.array(preds)) ** 2).mean()
+    print('Loss is ', loss)
+    print('Rank Correlation is ', rcorr)
     sns.distplot(ys, label='Ground Truth')
     sns.distplot(preds, label='Predictions')
     plt.title(f'prediction distribution on {len(d_test)} samples')
     plt.legend()
     plt.savefig(f'restest.png', dpi=500)
+    df.to_csv('Test.csv')
