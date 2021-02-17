@@ -24,6 +24,8 @@ from PIL import Image
 img = Image.open('./path/to/image')
 img.convert('RGB')
 
+model.eval()
+
 image_x = transformer(img)
 
 prediction = model(image_x)

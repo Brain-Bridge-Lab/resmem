@@ -62,7 +62,7 @@ with torch.no_grad():
     print('Rank Correlation is ', rcorr)
     sns.distplot(ys, label='Ground Truth')
     sns.distplot(preds, label='Predictions')
-    plt.title(f'prediction distribution on {len(d_test)} samples')
+    plt.title(f'Prediction distribution for ResMemRetrain')
     plt.legend()
     plt.savefig(f'restest.png', dpi=500)
     df.to_csv('Test.csv')
