@@ -54,3 +54,16 @@ git lfs pull
 to get access to the full model. Also note that the `tests.py` file that's included with this repository references a 
 database that we, at this time, do not have permission to distribute, so consider that test file to be a guide rather 
 than a hard-and-fast test.
+
+## Citation
+
+```
+@inproceedings{ResMem2021,
+title = {Embracing New Techniques in Deep Learning for Predicting Image Memorability},
+author = {Needell, Coen D. and Bainbridge, Wilma A.},
+booktitle = {Proceedings of the Vision Sciences Society, 2021},
+year = {2021},
+publisher = {ARVO Journals},
+url = {https://www.coeneedell.com/publication/vss2021/vss2021.pdf}
+}
+```
