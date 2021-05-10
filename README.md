@@ -21,14 +21,18 @@ The `transformer` is designed to be used with pillow.
 ```python
 from PIL import Image
 
-img = Image.open('./path/to/image')
-img.convert('RGB')
+img = Image.open('./path/to/image') # This loads your image into memory
+img.convert('RGB') 
+# This will convert your image into RGB, for instance if it's a PNG (RGBA) or if it's black and white.
 
 model.eval()
+# Set the model to inference mode.
 
 image_x = transformer(img)
+# Run the preprocessing function
 
 prediction = model(image_x)
+# Get your prediction!
 ```
 
 ## Description of the Model
