@@ -31,7 +31,9 @@ model.eval()
 image_x = transformer(img)
 # Run the preprocessing function
 
-prediction = model(image_x)
+prediction = model(image_x.view(-1, 3, 227, 227))
+# For a single image, the image must be reshaped into a batch
+# with size 1.
 # Get your prediction!
 ```
 
