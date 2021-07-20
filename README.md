@@ -37,6 +37,8 @@ prediction = model(image_x.view(-1, 3, 227, 227))
 # Get your prediction!
 ```
 
+For more advanced usage, see the `sample.py` file in this repository.
+
 ## Description of the Model
 
 Historically, the next big advancement in using neural networks after AlexNet, the basis for MemNet, was ResNet. This allowed for convolutional neural networks to be built deeper, with more layers, without the gradient exploding or vanishing. Knowing that, let's try to include this in our model. What we will do is take a pre-trained ResNet, that is the whole thing, not just the convolutional features, and add it as an input feature for our regression step. The code for this is [here.](https://www.coeneedell.com/appendix/memnet_extras/#resmem)
