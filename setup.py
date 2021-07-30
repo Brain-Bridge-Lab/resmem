@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="resmem",
-    version="1.1.1",
+    version="1.1.2",
     author="Coën D. Needell",
     author_email="coen@needell.co",
     description="A package that wraps the ResMem pytorch model.",
