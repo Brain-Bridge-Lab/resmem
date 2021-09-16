@@ -22,7 +22,7 @@ The `transformer` is designed to be used with pillow.
 from PIL import Image
 
 img = Image.open('./path/to/image') # This loads your image into memory
-img.convert('RGB') 
+img = img.convert('RGB') 
 # This will convert your image into RGB, for instance if it's a PNG (RGBA) or if it's black and white.
 
 model.eval()
