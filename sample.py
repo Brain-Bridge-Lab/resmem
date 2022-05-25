@@ -34,13 +34,17 @@ class MemCatDataset(Dataset):
             idx = idx.tolist()
 
         img_name = self.memcat_frame[idx, 1]
-        cat = self.memcat_frame[idx, 2]
-        scat = self.memcat_frame[idx, 3]
-        img = Image.open(f'{self.loc}images/{cat}/{scat}/{img_name}').convert('RGB')
-        y = self.memcat_frame[idx, 12]
-        y = torch.Tensor([float(y)])
-        image_x = self.transform(img)
-        return [image_x, y, img_name]
+        
+        try:
+            cat = self.memcat_frame[idx, 2]
+            scat = self.memcat_frame[idx, 3]
+            img = Image.open(f'{self.loc}images/{cat}/{scat}/{img_name}').convert('RGB')
+            y = self.memcat_frame[idx, 12]
+            y = torch.Tensor([float(y)])
+            image_x = self.transform(img)
+            return [image_x, y, img_name]
+        except:
+          return [ -1, -1, -1 ]
 
 
 class LamemDataset(Dataset):
@@ -57,16 +61,22 @@ class LamemDataset(Dataset):
             idx = idx.tolist()
 
         img_name = self.lamem_frame[idx, 0]
-        image = Image.open(f'{self.loc}/images/{img_name}')
-        image = image.convert('RGB')
-        y = self.lamem_frame[idx, 1]
-        y = torch.Tensor([float(y)])
-        image_x = self.transform(image)
-        return [image_x, y, img_name]
+
+        try:
+            image = Image.open(f'{self.loc}/images/{img_name}')
+            image = image.convert('RGB')
+            y = self.lamem_frame[idx, 1]
+            y = torch.Tensor([float(y)])
+            image_x = self.transform(image)
+            return [image_x, y, img_name]
+        except:
+          return [ -1, -1, -1 ]
 
 
 dt = ConcatDataset((LamemDataset(), MemCatDataset()))
-_, d_test = random_split(dt, [63741, 5000])
+val_size = int(len(dt) * 0.2)
+train_size = len(dt)- int(len(dt) * 0.2)
+_, d_test = random_split(dt, [train_size, val_size])
 d_test = DataLoader(d_test, batch_size=32, num_workers=4, pin_memory=True)
 model = ResMem(pretrained=True).cuda(ORDINAL)
 
@@ -82,6 +92,8 @@ if len(d_test):
         names = []
         t = 1
         for batch in d_test:
+            if batch == [ -1, -1, -1 ]:
+              continue
             x, y, name = batch
             ys += y.squeeze().tolist()
             bs, c, h, w = x.size()

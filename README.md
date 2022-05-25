@@ -35,6 +35,9 @@ prediction = model(image_x.view(-1, 3, 227, 227))
 # For a single image, the image must be reshaped into a batch
 # with size 1.
 # Get your prediction!
+
+print(prediction)
+# see result
 ```
 
 For more advanced usage, see the `sample.py` file in this repository.
