@@ -22,7 +22,8 @@ setuptools.setup(
     ],
     install_requires=[
         'torch',
-        'torchvision'
+        'torchvision',
+        'click',
     ],
     python_requires='>=3.6',
 )

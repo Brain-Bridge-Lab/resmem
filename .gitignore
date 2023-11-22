@@ -1,8 +1,0 @@
-/venv/
-tests.py
-dist
-build
-Sources
-resmem.egg-info
-.gitignore
-.Rproj.user
